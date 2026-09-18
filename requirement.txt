@@ -1,0 +1,125 @@
+Project Requirement – Collection & Recovery Analytics Dashboard (Demo)
+Need a web-based dashboard for collection and recovery operations. The purpose is to monitor collection performance, agent productivity, PTP tracking, settlement tracking, and management reporting.
+1. Login & User Management
+Secure Login Page
+Role-Based Access
+Admin
+Manager
+Team Leader
+Agent
+2. Dashboard Overview
+Top KPI Cards:
+Total Accounts Allocated
+Total Outstanding Amount
+Total Collection Amount
+Collection Percentage
+PTP Count
+PTP Amount
+Kept PTP
+Broken PTP
+Active Agents
+Active Teams
+3. Dashboard Filters
+Date Range
+Agency
+Team Leader
+Agent
+Bucket
+State
+City
+Product Type
+4. Performance Analytics
+Charts and Graphs:
+Daily Collection Trend
+Weekly Collection Trend
+Monthly Collection Trend
+Agent Wise Performance
+Team Wise Performance
+Bucket Wise Performance
+Collection Achievement Trend
+5. Agent Performance Module
+Display:
+Agent Name
+Allocated Accounts
+Collection Amount
+Collection %
+PTP Count
+PTP Amount
+Kept PTP
+Broken PTP
+Ranking
+6. Team Performance Module
+Display:
+Team Leader Name
+Team Size
+Allocation
+Collection
+Achievement %
+Team Ranking
+7. Bucket Analysis
+Separate analysis for:
+B1
+B2
+B3
+B4
+B5
+B6+
+Show:
+Allocation
+Collection
+Achievement %
+Graphical Representation
+8. Customer Search
+Search by:
+Customer Name
+Mobile Number
+Loan Number
+Display:
+Customer Details
+Outstanding Amount
+Bucket
+Last Payment Date
+Last Follow-up
+Latest Remark
+9. Field Visit Tracking
+Capture:
+Visit Date
+Customer Met (Yes/No)
+Promise to Pay
+Settlement Interest
+Remarks
+Visit history should be visible.
+10. Settlement Tracker
+Display:
+Customer Name
+Loan Number
+Outstanding Amount
+Settlement Amount
+Request Date
+Current Status
+Approved / Pending / Rejected
+11. Report Section
+Export options:
+Excel
+CSV
+PDF
+12. Admin Module
+User Creation
+User Role Management
+Data Upload Through Excel
+Dashboard Configuration
+13. Demo Requirements
+Use dummy collection data (500–1000 records).
+Modern professional UI.
+Mobile responsive.
+Clean dashboard layout.
+Fast loading.
+14. Future Scalability
+System architecture should allow future addition of:
+Credit Risk Analytics
+Collection Forecasting
+AI-Based Collection Insights
+Recovery Management
+Legal Case Tracking
+Branch Performance Monitoring
+Deliverable: Clickable working demo with sample data, dashboard screens, reports, and analytics.

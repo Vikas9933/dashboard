@@ -1,0 +1,327 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f8fafc;
+  --foreground: #0f172a;
+  --dash-bg: #0b1120;
+  --dash-bg-elevated: #111827;
+  --dash-surface: rgba(17, 24, 39, 0.72);
+  --dash-glass-border: rgba(0, 242, 254, 0.12);
+  --dash-teal: #00f2fe;
+  --dash-teal-glow: rgba(0, 242, 254, 0.35);
+  --dash-purple: #a855f7;
+  --dash-purple-glow: rgba(168, 85, 247, 0.4);
+  --dash-text: #f8fafc;
+  --dash-muted: #94a3b8;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+}
+
+@keyframes auth-form-enter {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.auth-form-enter {
+  animation: auth-form-enter 0.45s ease-out;
+}
+
+@keyframes dash-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+@keyframes dash-glow-pulse {
+  0%,
+  100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes dash-counter-shine {
+  0% {
+    background-position: 200% center;
+  }
+  100% {
+    background-position: -200% center;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* ── Premium fintech dashboard theme ── */
+.dash-canvas {
+  position: relative;
+  min-height: 100%;
+  color-scheme: dark;
+  background:
+    radial-gradient(ellipse 80% 50% at 20% -10%, rgba(0, 242, 254, 0.08), transparent 50%),
+    radial-gradient(ellipse 60% 40% at 90% 10%, rgba(168, 85, 247, 0.1), transparent 45%),
+    radial-gradient(ellipse 50% 30% at 50% 100%, rgba(0, 242, 254, 0.05), transparent 50%),
+    var(--dash-bg);
+}
+
+.dash-header,
+.dash-glass,
+.dash-clay {
+  color-scheme: dark;
+}
+
+/* Native <select> dropdown popups don't inherit page background — force dark
+   rendering everywhere inside the dashboard shell (color-scheme covers modern
+   Chromium/Firefox; the option rules below are a fallback for older engines). */
+.dash-canvas select,
+.dash-header select {
+  color-scheme: dark;
+}
+
+.dash-canvas option,
+.dash-header option {
+  background-color: #0f172a;
+  color: #e2e8f0;
+}
+
+.dash-canvas::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(0, 242, 254, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 242, 254, 0.03) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse at center, black 20%, transparent 75%);
+  z-index: 0;
+}
+
+.dash-stage {
+  position: relative;
+  z-index: 1;
+}
+
+.dash-glass {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.08) 0%,
+    rgba(255, 255, 255, 0.02) 50%,
+    rgba(0, 242, 254, 0.04) 100%
+  );
+  backdrop-filter: blur(20px) saturate(1.4);
+  -webkit-backdrop-filter: blur(20px) saturate(1.4);
+  border: 1px solid var(--dash-glass-border);
+  box-shadow:
+    0 4px 24px rgba(0, 0, 0, 0.35),
+    0 1px 0 rgba(255, 255, 255, 0.06) inset,
+    0 0 40px rgba(0, 242, 254, 0.03);
+}
+
+/* Solid-enough header so scrolled content never bleeds/overlaps through the glass */
+.dash-header {
+  position: relative;
+  isolation: isolate;
+  background: linear-gradient(135deg, rgba(11, 17, 32, 0.97) 0%, rgba(15, 23, 42, 0.95) 100%);
+  backdrop-filter: blur(20px) saturate(1.4);
+  -webkit-backdrop-filter: blur(20px) saturate(1.4);
+  border-bottom: 1px solid rgba(0, 242, 254, 0.1);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
+}
+
+.dash-chart-3d {
+  transform: perspective(1200px) rotateX(4deg);
+  transform-style: preserve-3d;
+  filter: drop-shadow(0 12px 24px rgba(0, 242, 254, 0.08));
+  min-width: 0;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .dash-chart-3d {
+    transform: none;
+    filter: none;
+  }
+}
+
+.dash-clay {
+  background: linear-gradient(145deg, #1a2332 0%, #0f1623 100%);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow:
+    0 12px 32px rgba(0, 0, 0, 0.45),
+    0 4px 8px rgba(0, 0, 0, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    inset 0 -2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.dash-hero-glow {
+  box-shadow:
+    0 0 60px rgba(0, 242, 254, 0.15),
+    0 0 120px rgba(168, 85, 247, 0.08),
+    0 20px 50px rgba(0, 0, 0, 0.4);
+}
+
+.dash-text-gradient {
+  background: linear-gradient(135deg, #ffffff 0%, var(--dash-teal) 50%, var(--dash-purple) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.dash-counter {
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  color: #ffffff;
+  text-shadow: 0 0 24px rgba(0, 242, 254, 0.35);
+}
+
+.dash-input {
+  width: 100%;
+  border-radius: 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.05);
+  padding: 0.625rem 0.75rem;
+  font-size: 0.875rem;
+  color: #e2e8f0;
+  outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.dash-input:focus {
+  border-color: rgba(0, 242, 254, 0.4);
+  box-shadow: 0 0 0 2px rgba(0, 242, 254, 0.1);
+}
+
+.dash-input::placeholder {
+  color: #64748b;
+}
+
+.dash-btn-primary {
+  border-radius: 0.75rem;
+  background: linear-gradient(135deg, #00f2fe 0%, #0891b2 100%);
+  padding: 0.625rem 1.25rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #0b1120;
+  transition: opacity 0.15s;
+}
+
+.dash-btn-primary:hover {
+  opacity: 0.9;
+}
+
+.dash-btn-primary:disabled {
+  opacity: 0.5;
+}
+
+.dash-section-title {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--dash-teal);
+}
+
+.dash-nav-active {
+  background: linear-gradient(135deg, rgba(0, 242, 254, 0.2), rgba(168, 85, 247, 0.15));
+  border: 1px solid rgba(0, 242, 254, 0.25);
+  box-shadow: 0 0 20px rgba(0, 242, 254, 0.12);
+}
+
+.dash-leaderboard-gold {
+  background: linear-gradient(135deg, rgba(250, 204, 21, 0.2), rgba(0, 242, 254, 0.1));
+  border-color: rgba(250, 204, 21, 0.35);
+}
+
+.dash-leaderboard-silver {
+  background: linear-gradient(135deg, rgba(148, 163, 184, 0.2), rgba(0, 242, 254, 0.08));
+  border-color: rgba(148, 163, 184, 0.3);
+}
+
+.dash-leaderboard-bronze {
+  background: linear-gradient(135deg, rgba(217, 119, 6, 0.2), rgba(168, 85, 247, 0.08));
+  border-color: rgba(217, 119, 6, 0.3);
+}
+
+/* Analytics workspace themes — scoped to analytics page only */
+.analytics-theme-light {
+  color-scheme: light;
+}
+
+.analytics-theme-light .dash-glass,
+.analytics-theme-light .dash-clay {
+  background: rgba(255, 255, 255, 0.92);
+  border-color: rgba(148, 163, 184, 0.35);
+  color-scheme: light;
+}
+
+.analytics-theme-light .text-white {
+  color: #0f172a;
+}
+
+.analytics-theme-light .text-slate-400,
+.analytics-theme-light .text-slate-500 {
+  color: #64748b;
+}
+
+.analytics-theme-light .text-slate-300,
+.analytics-theme-light .text-slate-200 {
+  color: #334155;
+}
+
+.analytics-theme-light .bg-white\/5 {
+  background-color: rgba(15, 23, 42, 0.05);
+}
+
+.analytics-theme-light .border-white\/5,
+.analytics-theme-light .border-white\/10 {
+  border-color: rgba(148, 163, 184, 0.35);
+}
+
+.analytics-theme-corporate .dash-glass,
+.analytics-theme-corporate .dash-clay {
+  background: linear-gradient(145deg, rgba(15, 23, 42, 0.95), rgba(30, 58, 138, 0.35));
+  border-color: rgba(59, 130, 246, 0.25);
+}
+
+.analytics-theme-corporate .dash-section-title,
+.analytics-theme-corporate .text-\[\#00F2FE\] {
+  color: #60a5fa;
+}
+
+.analytics-density-compact .dash-clay {
+  padding: 0.75rem;
+}
+
+.analytics-density-spacious .dash-clay {
+  padding: 1.5rem;
+}
+
+.analytics-density-spacious .dash-chart-3d {
+  min-height: 22rem;
+}

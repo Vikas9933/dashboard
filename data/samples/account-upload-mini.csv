@@ -1,0 +1,11 @@
+loan_number,customer_name,mobile_number,bucket,product_type,state,city,allocated_amount,outstanding_amount,collected_amount,agency_code,team_name,agent_email
+LN-900001,Vikram Sharma,7907116236,B5,Credit Card,Delhi,Rohini,50000,31918,13691,,,
+LN-900002,Rohan Sharma,8737616591,B2,Auto Loan,Tamil Nadu,Madurai,500000,296144,0,,,
+LN-900003,Neha Patel,7863133949,B4,Auto Loan,Tamil Nadu,Madurai,100000,40624,22392,,,
+LN-900004,Rahul Kumar,9042095395,B5,Personal Loan,Delhi,Dwarka,100000,93794,0,,,
+LN-900005,Rahul Verma,8907686363,B1,Auto Loan,Maharashtra,Pune,100000,60138,41875,,,
+LN-900006,Neha Verma,7376263945,B2,Business Loan,Maharashtra,Pune,300000,165976,63327,,,
+LN-900007,Vikram Nair,7701538067,B3,Credit Card,Gujarat,Surat,500000,346968,90932,,,
+LN-900008,Amit Patel,9580890281,B3,Credit Card,Maharashtra,Mumbai,150000,133278,67539,,,
+LN-900009,Anjali Joshi,9171436830,B5,Credit Card,Telangana,Warangal,500000,225171,30708,,,
+LN-900010,Vikram Verma,8878528415,B1,Personal Loan,Maharashtra,Pune,80000,69436,24760,,,
