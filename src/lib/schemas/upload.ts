@@ -16,6 +16,8 @@ export const uploadRowSchema = z.object({
   agency_code: z.string().optional(),
   team_name: z.string().optional(),
   agent_email: z.string().email().optional(),
+  client_name: z.string().min(1).optional(),
+  bank_name: z.string().min(1).optional(),
 });
 
 export const uploadBatchSchema = z

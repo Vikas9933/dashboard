@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import {
   BarChart3,
   BrainCircuit,
+  Phone,
   CreditCard,
   FileDown,
   LayoutDashboard,
@@ -44,6 +45,7 @@ const navItems: {
   { href: "/dashboard#settlements", label: "Settlements", icon: Scale, hash: "#settlements", featureKey: "settlement_tracking" },
   { href: "/dashboard#reports", label: "Reports", icon: FileDown, hash: "#reports", featureKey: "basic_reports", requiresExport: true },
   { href: "/dashboard/analytics", label: "Analytics", icon: BrainCircuit, hash: "", featureKey: "advanced_analytics" },
+  { href: "/dashboard/dialer", label: "Dialer", icon: Phone, hash: "", featureKey: "dialer_management" },
   { href: "/dashboard/integrations", label: "API & Integrations", icon: Plug, hash: "", featureKey: "api_integration" },
   { href: "/dashboard/webhooks", label: "Webhooks", icon: Webhook, hash: "", featureKey: "webhooks" },
   { href: "/dashboard/subscription", label: "Subscription", icon: CreditCard, hash: "" },
@@ -113,7 +115,11 @@ function SidebarContent({
           .filter((item) => !item.requiresExport || isFeatureEnabled("excel_export"))
           .map((item) => {
             const Icon = item.icon;
-            const active = item.hash ? pathname === "/dashboard" : pathname.startsWith(item.href);
+            const active = item.hash
+              ? pathname === "/dashboard"
+              : item.href === "/dashboard"
+                ? pathname === "/dashboard"
+                : pathname === item.href || pathname.startsWith(`${item.href}/`);
             return (
               <Link
                 key={item.href + item.hash}

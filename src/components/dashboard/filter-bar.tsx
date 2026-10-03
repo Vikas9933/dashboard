@@ -17,6 +17,8 @@ export function FilterBar({
   states,
   cities,
   productTypes,
+  clients = [],
+  banks = [],
   basePath = "/dashboard",
 }: FilterBarProps) {
   const router = useRouter();
@@ -38,7 +40,7 @@ export function FilterBar({
 
   const hasFilters = [
     "from", "to", "agency", "team", "leader", "agent",
-    "bucket", "state", "city", "product",
+    "bucket", "state", "city", "product", "client", "bank",
   ].some((k) => searchParams.get(k));
 
   return (
@@ -106,6 +108,18 @@ export function FilterBar({
           <option value="">All Products</option>
           {productTypes.map((p) => <option key={p} value={p}>{p}</option>)}
         </select>
+        {clients.length > 0 && (
+          <select className={selectClass} value={searchParams.get("client") ?? ""} onChange={(e) => updateFilter("client", e.target.value)}>
+            <option value="">All Clients</option>
+            {clients.map((c) => <option key={c} value={c}>{c}</option>)}
+          </select>
+        )}
+        {banks.length > 0 && (
+          <select className={selectClass} value={searchParams.get("bank") ?? ""} onChange={(e) => updateFilter("bank", e.target.value)}>
+            <option value="">All Banks</option>
+            {banks.map((b) => <option key={b} value={b}>{b}</option>)}
+          </select>
+        )}
       </div>
     </div>
   );

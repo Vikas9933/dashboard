@@ -19,7 +19,8 @@ export type AuditAction =
   | "field_visit.create"
   | "export.report"
   | "export.analytics"
-  | "email.analytics_report";
+  | "email.analytics_report"
+  | "dialer.ingest";
 
 export async function logAudit(params: {
   userId: string;

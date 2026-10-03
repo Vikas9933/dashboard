@@ -1,0 +1,7 @@
+{
+  "name": "Collection & Recovery Dashboard",
+  "description": "Production-ready collection and recovery analytics dashboard for monitoring performance, PTP tracking, and team productivity.",
+  "capabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

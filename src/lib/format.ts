@@ -14,6 +14,16 @@ export function formatPercent(value: number): string {
   return `${value.toFixed(1)}%`;
 }
 
+export function formatDuration(totalSeconds: number): string {
+  const seconds = Math.max(0, Math.round(totalSeconds));
+  const hours = Math.floor(seconds / 3600);
+  const minutes = Math.floor((seconds % 3600) / 60);
+  const rest = seconds % 60;
+  if (hours > 0) return `${hours}h ${minutes}m`;
+  if (minutes > 0) return `${minutes}m ${rest}s`;
+  return `${rest}s`;
+}
+
 export function formatBucket(bucket: string): string {
   return bucket === "B6_PLUS" ? "B6+" : bucket;
 }

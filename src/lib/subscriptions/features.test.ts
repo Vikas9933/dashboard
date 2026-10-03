@@ -35,13 +35,14 @@ describe("subscription features", () => {
     expect(hasFeature(ctx, "dashboard")).toBe(true);
     expect(hasFeature(ctx, "excel_export")).toBe(true);
     expect(hasFeature(ctx, "advanced_analytics")).toBe(false);
+    expect(hasFeature(ctx, "dialer_management")).toBe(false);
     expect(hasFeature(ctx, "api_integration")).toBe(false);
   });
 
   it("grants pro features on pro plan", () => {
     const ctx = mockContext({ planCode: "pro", planName: "Pro" });
-    expect(hasFeature(ctx, "audit_logs")).toBe(true);
-    expect(hasFeature(ctx, "settlement_tracking")).toBe(true);
+    expect(hasFeature(ctx, "advanced_analytics")).toBe(true);
+    expect(hasFeature(ctx, "dialer_management")).toBe(true);
     expect(hasFeature(ctx, "webhooks")).toBe(false);
   });
 
@@ -83,6 +84,7 @@ describe("subscription features", () => {
 
   it("maps minimum plans correctly", () => {
     expect(requiredPlanForFeature("audit_logs")).toBe("pro");
+    expect(requiredPlanForFeature("dialer_management")).toBe("pro");
     expect(requiredPlanForFeature("api_integration")).toBe("enterprise");
     expect(FEATURE_MIN_PLAN.dashboard).toBe("standard");
   });

@@ -63,6 +63,8 @@ async function getFilteredAccounts(filters: DashboardFilters = {}): Promise<Acco
   if (scoped.state) query = query.eq("state", scoped.state);
   if (scoped.city) query = query.eq("city", scoped.city);
   if (scoped.productType) query = query.eq("product_type", scoped.productType);
+  if (scoped.clientName) query = query.eq("client_name", scoped.clientName);
+  if (scoped.bankName) query = query.eq("bank_name", scoped.bankName);
 
   const { data } = await query;
   return (data ?? []) as AccountRow[];
@@ -474,7 +476,7 @@ export async function getFilterOptions(): Promise<FilterOptions> {
   let agenciesQuery = supabase.from("agencies").select("id, name").eq("is_active", true);
   let teamsQuery = supabase.from("teams").select("id, name").eq("is_active", true);
   let profilesQuery = supabase.from("profiles").select("id, full_name, role").eq("is_active", true);
-  let accountsQuery = supabase.from("accounts").select("bucket, state, city, product_type");
+  let accountsQuery = supabase.from("accounts").select("bucket, state, city, product_type, client_name, bank_name");
 
   if (profile?.tenant_id) {
     agenciesQuery = agenciesQuery.eq("tenant_id", profile.tenant_id);
@@ -513,6 +515,8 @@ export async function getFilterOptions(): Promise<FilterOptions> {
     states: [...new Set(accts.map((a) => a.state).filter(Boolean) as string[])].sort(),
     cities: [...new Set(accts.map((a) => a.city).filter(Boolean) as string[])].sort(),
     productTypes: [...new Set(accts.map((a) => a.product_type as string))].sort(),
+    clients: [...new Set(accts.map((a) => a.client_name).filter(Boolean) as string[])].sort(),
+    banks: [...new Set(accts.map((a) => a.bank_name).filter(Boolean) as string[])].sort(),
   };
 }
 
@@ -528,5 +532,7 @@ export function parseFilters(params: Record<string, string | undefined>): Dashbo
     state: params.state,
     city: params.city,
     productType: params.product,
+    clientName: params.client,
+    bankName: params.bank,
   };
 }

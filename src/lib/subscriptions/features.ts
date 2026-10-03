@@ -33,6 +33,7 @@ export const FEATURE_MIN_PLAN: Record<SubscriptionFeatureKey, SubscriptionPlanCo
   white_label: "enterprise",
   dedicated_database: "enterprise",
   custom_reports_modules: "enterprise",
+  dialer_management: "pro",
 };
 
 export const SUBSCRIPTION_FEATURE_KEYS = Object.keys(FEATURE_MIN_PLAN) as SubscriptionFeatureKey[];
@@ -74,6 +75,7 @@ export const FEATURE_LABELS: Record<SubscriptionFeatureKey, string> = {
   white_label: "White Label Branding",
   dedicated_database: "Dedicated Database Option",
   custom_reports_modules: "Custom Reports & Modules",
+  dialer_management: "Dialer Management & Performance",
 };
 
 const ACTIVE_PLAN_STATUSES: PlanStatus[] = ["active", "trial"];

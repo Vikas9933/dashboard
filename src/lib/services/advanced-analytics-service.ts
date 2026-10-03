@@ -157,6 +157,8 @@ async function loadAnalyticsBundle(filters: DashboardFilters = {}): Promise<Anal
   if (scoped.state) accountsQuery = accountsQuery.eq("state", scoped.state);
   if (scoped.city) accountsQuery = accountsQuery.eq("city", scoped.city);
   if (scoped.productType) accountsQuery = accountsQuery.eq("product_type", scoped.productType);
+  if (scoped.clientName) accountsQuery = accountsQuery.eq("client_name", scoped.clientName);
+  if (scoped.bankName) accountsQuery = accountsQuery.eq("bank_name", scoped.bankName);
 
   const [{ data: accountsData }, { data: agenciesData }, { data: teamsData }, { data: profilesData }, config] =
     await Promise.all([

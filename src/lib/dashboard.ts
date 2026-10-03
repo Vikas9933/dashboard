@@ -12,4 +12,5 @@ export {
   getFilterOptions,
   parseFilters,
   getAnalyticsWorkspaceData,
+  getDialerWorkspaceData,
 } from "@/lib/services";

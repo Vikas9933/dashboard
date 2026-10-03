@@ -141,6 +141,8 @@ export async function processAccountUpload(
       assigned_agent_id: agentId,
       bucket: row.bucket,
       product_type: row.product_type,
+      client_name: row.client_name ?? undefined,
+      bank_name: row.bank_name ?? undefined,
       state: row.state,
       city: row.city,
       allocated_amount: row.allocated_amount,

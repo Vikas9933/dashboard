@@ -41,7 +41,8 @@ export type SubscriptionFeatureKey =
   | "custom_workflows"
   | "white_label"
   | "dedicated_database"
-  | "custom_reports_modules";
+  | "custom_reports_modules"
+  | "dialer_management";
 
 export interface TenantSubscriptionContext {
   organizationId: OrganizationId | null;
@@ -119,6 +120,8 @@ export interface DashboardFilters {
   state?: string;
   city?: string;
   productType?: string;
+  clientName?: string;
+  bankName?: string;
 }
 
 export interface DashboardKpis {
@@ -214,6 +217,8 @@ export interface FilterOptions {
   states: string[];
   cities: string[];
   productTypes: string[];
+  clients: string[];
+  banks: string[];
 }
 
 export interface DashboardConfig {

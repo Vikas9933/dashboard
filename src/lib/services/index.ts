@@ -1,5 +1,6 @@
 export { fetchAuditLogs, type AuditLogEntry } from "@/lib/services/audit-service";
 export { getAnalyticsWorkspaceData } from "@/lib/services/advanced-analytics-service";
+export { getDialerWorkspaceData, ingestDialerCalls } from "@/lib/services/dialer-performance-service";
 export type {
   AnalyticsWorkspaceData,
   ExecutiveSummary,
